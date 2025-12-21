@@ -6,7 +6,7 @@
 
     <div class="flex-1 flex flex-col justify-between relative z-10 max-w-2xl mx-auto w-full">
       <!-- Header Section -->
-      <div class="text-center mb-8">
+      <div class="text-center mb-8 flex flex-col items-center">
         <div class="inline-flex items-center justify-center gap-3 mb-3">
           <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/20">
             <span class="text-2xl">💪</span>
