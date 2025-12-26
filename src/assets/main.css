@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-dark: var(--color-gray-900);
+  --color-light: var(--color-gray-50);
+  --color-primary: var(--color-blue-600);
+  --color-danger: var(--color-red-500);
+}
