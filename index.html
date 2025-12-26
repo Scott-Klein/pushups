@@ -5,8 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/pushups/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scotts Pushups</title>
-    <script type="module" crossorigin src="/pushups/assets/index-Dz3dKjvb.js"></script>
-    <link rel="stylesheet" crossorigin href="/pushups/assets/index-p94DmeLs.css">
+    <script>
+      const themePreference = localStorage.getItem('theme-preference') || 'system';
+      const shouldBeDark = 
+        themePreference === 'dark' ||
+        (themePreference === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      
+      if (shouldBeDark) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    <script type="module" crossorigin src="/pushups/assets/index-f8UtJXJN.js"></script>
+    <link rel="stylesheet" crossorigin href="/pushups/assets/index-CG4B9GQe.css">
   </head>
   <body>
     <div id="app"></div>
