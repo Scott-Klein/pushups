@@ -5,6 +5,16 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scotts Pushups</title>
+    <script>
+      const themePreference = localStorage.getItem('theme-preference') || 'system';
+      const shouldBeDark = 
+        themePreference === 'dark' ||
+        (themePreference === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      
+      if (shouldBeDark) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>

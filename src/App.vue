@@ -1,5 +1,5 @@
 <template>
-  <div class="select-none min-h-dvh flex flex-col p-6 relative overflow-hidden">
+  <div class="dark:bg-gray-950 dark:text-gray-50 text-gray-800 select-none min-h-dvh flex flex-col p-6 relative overflow-hidden">
     <div class="flex-1 flex flex-col justify-between relative z-10 max-w-2xl mx-auto w-full">
       <!-- Header Section -->
       <div class="text-center mb-8 flex flex-col items-center">
@@ -7,7 +7,7 @@
           <h1 class="font-bold text-4xl tracking-tight">Pushups</h1>
         </div>
         <div
-          class="inline-flex items-center gap-4 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-3 shadow-2xl"
+          class="inline-flex items-center gap-4 backdrop-blur-xl dark:bg-gray-900 dark:inset-shadow bg-gray-50 rounded-2xl px-6 py-3 shadow-2xl"
         >
           <div class="text-center">
             <p class="text-xs font-semibold uppercase tracking-wider mb-1">Day</p>
@@ -37,7 +37,7 @@
               v-if="completedSets < progressStore.targetSets"
               :key="completedSets"
               @dblclick="handleSetComplete(completedSets)"
-              class="w-32 h-32 rounded-3xl shadow-2xl cursor-pointer hover:scale-110 transition-transform duration-300 relative overflow-hidden"
+              class="w-32 h-32 rounded-3xl dark:bg-gray-900 dark:inset-shadow shadow-2xl cursor-pointer hover:scale-110 transition-transform duration-300 relative overflow-hidden"
             >
               <div class="absolute inset-0 flex flex-col items-center justify-center">
                 <span class="text-5xl font-bold mb-1">
@@ -47,10 +47,6 @@
                   Set {{ completedSets + 1 }}
                 </span>
               </div>
-              <!-- Pulse animation ring -->
-              <div class="absolute inset-0 rounded-3xl border-4 border-white/30 animate-ping"></div>
-              <!-- Shine effect -->
-              <div class="absolute inset-0 rounded-3xl"></div>
             </div>
           </Transition>
         </div>
@@ -64,13 +60,13 @@
             <div
               v-for="(pushups, index) in progressStore.pushupsPerSet"
               :key="index"
-              class="relative aspect-square rounded-2xl transition-all duration-300"
+              class="relative aspect-square rounded-2xl transition-all duration-300 dark:bg-gray-800 bg-gray-50 dark:inset-shadow cursor-pointer flex items-center justify-center"
               :class="[
                 index < completedSets
                   ? ''
                   : index === completedSets
-                    ? 'bg-white/5 border-2 border-white/5 opacity-30'
-                    : 'bg-white/5 backdrop-blur-xl border border-white/10',
+                    ? 'dark:bg-gray-900 bg-gray-50'
+                    : 'dark:bg-gray-700 bg-gray-100',
               ]"
             >
               <div class="absolute inset-0 flex flex-col items-center justify-center p-2">
@@ -96,10 +92,7 @@
 
       <!-- Settings Section -->
       <div class="mt-auto mx-auto max-w-sm">
-        <div
-          v-if="settingsOpen"
-          class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 shadow-2xl"
-        >
+        <div v-if="settingsOpen" class="bg-gray-100 dark:bg-gray-900 rounded-3xl p-6 shadow-lg">
           <!-- Settings Header -->
           <div
             @click="settingsOpen = false"
@@ -116,15 +109,15 @@
             <span class="/40 text-sm">Tap to close</span>
           </div>
 
-          <div>
-            <label class="/60 text-sm font-semibold uppercase tracking-wider mb-3 block">
-              Appearance
-            </label>
-            <div class="flex items-center gap-3 justify-end">
-              <ThemeToggle />
+          <div class="flex flex-col gap-12">
+            <div>
+              <label class="/60 text-sm font-semibold uppercase tracking-wider mb-3 block">
+                Appearance
+              </label>
+              <div class="flex items-center gap-3 justify-end">
+                <ThemeToggle />
+              </div>
             </div>
-          </div>
-          <div class="space-y-6">
             <!-- Number of Sets -->
             <div>
               <label class="/60 text-sm font-semibold uppercase tracking-wider mb-3 block">
@@ -212,7 +205,7 @@
             <!-- Reset Button -->
             <button
               @click="progressStore.setStartDay()"
-              class="w-full h-14 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 rounded-xl font-semibold transition-all shadow-lg shadow-blue-500/30 active:scale-95"
+              class="w-full h-14 rounded-xl font-semibold transition-all shadow-lg shadow-blue-500/30 active:scale-95"
             >
               Set Start Day to Today
             </button>
